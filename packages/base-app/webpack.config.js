@@ -17,7 +17,15 @@ const config = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remotes: {}
+      remotes: {},
+      shared: {
+        'react': {
+          singleton: true
+        },
+        'react-dom': {
+          singleton: true
+        }
+      }
     }),
     new HtmlWebpackPlugin({
       template: "index.html",

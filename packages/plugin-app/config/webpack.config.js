@@ -247,7 +247,7 @@ module.exports = function (webpackEnv) {
       level: 'none',
     },
     optimization: {
-      minimize: isEnvProduction,
+      minimize: false,
       minimizer: [
         // This is only used in production mode
         new TerserPlugin({
@@ -557,7 +557,8 @@ module.exports = function (webpackEnv) {
         filename: 'plugin_app.js',
         exposes: {
           './App': './src/bootstrap.js',
-        }
+        },
+        shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
       }),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
